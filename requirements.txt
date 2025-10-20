@@ -1,0 +1,31 @@
+# Yoga Pose Quality Analyzer - Requirements
+# Python >=3.8
+
+# Computer Vision & Pose Detection
+mediapipe==0.10.9
+opencv-python==4.8.1.78
+
+# Machine Learning & Data Processing
+scikit-learn==1.3.2
+numpy==1.26.2
+pandas==2.1.4
+joblib==1.3.2
+
+# Visualization
+matplotlib==3.8.2
+seaborn==0.13.0
+
+# Progress Bar
+tqdm==4.66.1
+
+# Jupyter Notebooks
+jupyter==1.0.0
+
+# API Backend
+flask==3.0.0
+flask-cors==4.0.0
+
+# Database & Authentication (NEW in V2)
+flask-sqlalchemy>=3.1.1
+flask-jwt-extended>=4.6.0
+python-dotenv>=1.0.0

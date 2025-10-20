@@ -1,0 +1,37 @@
+# Environnement virtuel Python
+venv/
+env/
+ENV/
+
+# Base de données SQLite
+instance/
+*.db
+*.sqlite
+
+# Fichiers Python compilés
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Modèles ML (peuvent être volumineux)
+*.pkl
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Fichiers de logs
+*.log
+
+# Variables d'environnement
+.env
+.env.local
+
+# Fichiers macOS
+.DS_Store
+
+# Fichiers IDE
+.vscode/
+.idea/
+*.swp
+*.swo
