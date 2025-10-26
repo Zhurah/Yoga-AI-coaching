@@ -15,7 +15,7 @@
 
 ---
 
-## 🎯 Vue d'Ensemble du Projet
+##  Vue d'Ensemble du Projet
 
 Ce projet implémente un système complet de coaching yoga qui analyse la posture corporelle en temps réel grâce à des techniques avancées de vision par ordinateur et d'apprentissage automatique. Il va au-delà de la simple classification de poses pour fournir un **feedback actionnable et contextuel** sur la qualité d'exécution.
 
@@ -29,124 +29,10 @@ L'apprentissage traditionnel du yoga nécessite :
 ### La Solution
 
 Un système alimenté par l'IA qui :
-- ✅ Détecte et classifie 5 postures de yoga avec **haute précision**
-- ✅ Analyse la qualité des poses selon **plusieurs dimensions biomécaniques**
-- ✅ Fournit un **coaching personnalisé en temps réel**
-- ✅ Fonctionne entièrement **en local** (confidentialité garantie, pas de cloud)
-
----
-
-## 🚀 Fonctionnalités Clés
-
-### 1. Classification Multi-Classes
-- **5 Postures Supportées** : Chien tête en bas, Planche, Arbre, Guerrier II, Déesse
-- **Haute Précision** : Entraîné sur un dataset diversifié avec évaluation rigoureuse
-- **Score de Confiance** : Ne fournit du feedback que si confiance ≥ 70%
-
-### 2. Analyse Qualitative Intelligente
-Chaque posture est analysée selon des **métriques spécifiques** :
-
-| Posture | Métriques Clés Analysées |
-|---------|--------------------------|
-| **Chien Tête en Bas** | Alignement hanches-épaules-chevilles, extension des bras, rectitude des jambes, symétrie |
-| **Planche** | Alignement du corps, engagement du core, positionnement des épaules, symétrie |
-| **Arbre** | Équilibre vertical, hauteur du pied, ouverture de la hanche, niveau des épaules |
-| **Guerrier II** | Alignement des bras, flexion du genou (90°), alignement genou-cheville, ouverture hanches |
-| **Déesse** | Largeur de l'écartement, profondeur du squat, alignement genoux-chevilles, posture du dos |
-
-### 3. Système de Feedback Contextuel
-- **Niveaux de Sévérité** : Excellent (✓✓), Bon (✓), Attention (⚠️), Conseils (💡), Encouragement (💪)
-- **Guidance Actionnable** : "Poussez les genoux vers l'extérieur, alignés avec les pieds" vs. "améliorez la forme" générique
-- **Coaching Progressif** : Reconnaît les modifications pour débutants
-
-### 4. Application Webcam Temps Réel
-- Détection et analyse de pose en direct
-- Overlay visuel avec suivi du squelette
-- Fréquence d'analyse configurable (par défaut : intervalles de 3s)
-- Latence minimale (<100ms par frame)
-
----
-
-## 📊 Démonstration
-
-### Sortie d'Analyse Temps Réel
-
-```json
-{
-  "classification": {
-    "pose": "plank",
-    "confidence": 94.2
-  },
-  "quality_analysis": {
-    "overall_score": 87.3,
-    "indicators": {
-      "alignment": 92.3,
-      "core_strength": 100.0,
-      "symmetry": 87.5,
-      "shoulder_position": 85.2
-    },
-    "feedback": [
-      "✓✓ Alignement parfait ! Corps bien droit.",
-      "✓✓ Planche complète ! Excellente force du core.",
-      "✓ Répartissez le poids équitablement."
-    ]
-  }
-}
-```
-
-### Visualisation de l'Analyse
-
-Lorsque vous lancez l'application temps réel, vous verrez :
-- **Overlay du squelette** sur votre corps (articulations vertes, connexions rouges)
-- **Pose détectée** avec pourcentage de confiance
-- **Score de qualité** sur 100
-- **Top 3 des indicateurs** avec code couleur selon la performance
-- **Feedback instantané** en bas de l'écran
-
----
-
-## 🏗️ Architecture
-
-### Conception du Système
-
-```
-┌─────────────────┐
-│  Entrée Vidéo   │ (Webcam / Image)
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────────────────────┐
-│  Estimation de Pose MediaPipe   │ (33 Landmarks 3D)
-└────────┬────────────────────────┘
-         │
-         ▼
-┌─────────────────────────────────┐
-│  Feature Engineering            │ (56 Features)
-│  • Angles articulaires (8)      │
-│  • Distances (6)                │
-│  • Ratios (2)                   │
-│  • Métriques de symétrie        │
-└────────┬────────────────────────┘
-         │
-         ├──────────────────┬──────────────────┐
-         ▼                  ▼                  ▼
-┌────────────────┐  ┌──────────────┐  ┌──────────────────┐
-│  Scaler        │  │  Classifier  │  │  Analyseur       │
-│  (Normalise)   │→ │  (Modèle ML) │→ │  de Qualité      │
-└────────────────┘  └──────────────┘  └──────────────────┘
-                            │                  │
-                            ▼                  ▼
-                    ┌──────────────────────────────────┐
-                    │  Pose + Confiance + Feedback     │
-                    └──────────────────────────────────┘
-```
-
-### Composants Principaux
-
-1. **`best_model.ipynb`** : Pipeline d'entraînement avec optimisation d'hyperparamètres (Random Forest, SVM, XGBoost)
-2. **`yoga_quality_analyzer.py`** : Moteur d'analyse qualitative modulaire avec évaluateurs spécifiques par pose
-3. **`realtime_app.py`** : Application webcam temps réel avec OpenCV
-4. **`test_system.py`** : Framework de test et validation end-to-end
+-  Détecte et classifie 5 postures de yoga avec **haute précision**
+-  Analyse la qualité des poses selon **plusieurs dimensions biomécaniques**
+-  Fournit un **coaching personnalisé en temps réel**
+-  Fonctionne entièrement **en local** (confidentialité garantie, pas de cloud)
 
 ---
 
@@ -221,6 +107,120 @@ cd backend
 python test_system.py
 # Génère des fichiers result_*.json avec analyse détaillée
 ```
+
+---
+
+##  Fonctionnalités Clés
+
+### 1. Classification Multi-Classes
+- **5 Postures Supportées** : Chien tête en bas, Planche, Arbre, Guerrier II, Déesse
+- **Haute Précision** : Entraîné sur un dataset diversifié avec évaluation rigoureuse
+- **Score de Confiance** : Ne fournit du feedback que si confiance ≥ 70%
+
+### 2. Analyse Qualitative Intelligente
+Chaque posture est analysée selon des **métriques spécifiques** :
+
+| Posture | Métriques Clés Analysées |
+|---------|--------------------------|
+| **Chien Tête en Bas** | Alignement hanches-épaules-chevilles, extension des bras, rectitude des jambes, symétrie |
+| **Planche** | Alignement du corps, engagement du core, positionnement des épaules, symétrie |
+| **Arbre** | Équilibre vertical, hauteur du pied, ouverture de la hanche, niveau des épaules |
+| **Guerrier II** | Alignement des bras, flexion du genou (90°), alignement genou-cheville, ouverture hanches |
+| **Déesse** | Largeur de l'écartement, profondeur du squat, alignement genoux-chevilles, posture du dos |
+
+### 3. Système de Feedback Contextuel
+- **Niveaux de Sévérité** : Excellent (✓✓), Bon (✓), Attention (⚠️), Conseils (💡), Encouragement (💪)
+- **Guidance Actionnable** : "Poussez les genoux vers l'extérieur, alignés avec les pieds" vs. "améliorez la forme" générique
+- **Coaching Progressif** : Reconnaît les modifications pour débutants
+
+### 4. Application Webcam Temps Réel
+- Détection et analyse de pose en direct
+- Overlay visuel avec suivi du squelette
+- Fréquence d'analyse configurable (par défaut : intervalles de 3s)
+- Latence minimale (<100ms par frame)
+
+---
+
+## 📊 Démonstration
+
+### Sortie d'Analyse Temps Réel
+
+```json
+{
+  "classification": {
+    "pose": "plank",
+    "confidence": 94.2
+  },
+  "quality_analysis": {
+    "overall_score": 87.3,
+    "indicators": {
+      "alignment": 92.3,
+      "core_strength": 100.0,
+      "symmetry": 87.5,
+      "shoulder_position": 85.2
+    },
+    "feedback": [
+      "✓✓ Alignement parfait ! Corps bien droit.",
+      "✓✓ Planche complète ! Excellente force du core.",
+      "✓ Répartissez le poids équitablement."
+    ]
+  }
+}
+```
+
+### Visualisation de l'Analyse
+
+Lorsque vous lancez l'application temps réel, vous verrez :
+- **Overlay du squelette** sur votre corps (articulations vertes, connexions rouges)
+- **Pose détectée** avec pourcentage de confiance
+- **Score de qualité** sur 100
+- **Top 3 des indicateurs** avec code couleur selon la performance
+- **Feedback instantané** en bas de l'écran
+
+---
+
+## Architecture
+
+### Conception du Système
+
+```
+┌─────────────────┐
+│  Entrée Vidéo   │ (Webcam / Image)
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────────────────────┐
+│  Estimation de Pose MediaPipe   │ (33 Landmarks 3D)
+└────────┬────────────────────────┘
+         │
+         ▼
+┌─────────────────────────────────┐
+│  Feature Engineering            │ (56 Features)
+│  • Angles articulaires (8)      │
+│  • Distances (6)                │
+│  • Ratios (2)                   │
+│  • Métriques de symétrie        │
+└────────┬────────────────────────┘
+         │
+         ├──────────────────┬──────────────────┐
+         ▼                  ▼                  ▼
+┌────────────────┐  ┌──────────────┐  ┌──────────────────┐
+│  Scaler        │  │  Classifier  │  │  Analyseur       │
+│  (Normalise)   │→ │  (Modèle ML) │→ │  de Qualité      │
+└────────────────┘  └──────────────┘  └──────────────────┘
+                            │                  │
+                            ▼                  ▼
+                    ┌──────────────────────────────────┐
+                    │  Pose + Confiance + Feedback     │
+                    └──────────────────────────────────┘
+```
+
+### Composants Principaux
+
+1. **`best_model.ipynb`** : Pipeline d'entraînement avec optimisation d'hyperparamètres (Random Forest, SVM, XGBoost)
+2. **`yoga_quality_analyzer.py`** : Moteur d'analyse qualitative modulaire avec évaluateurs spécifiques par pose
+3. **`realtime_app.py`** : Application webcam temps réel avec OpenCV
+4. **`test_system.py`** : Framework de test et validation end-to-end
 
 ---
 
@@ -385,16 +385,8 @@ Ceci est un projet portfolio, mais les suggestions et retours sont bienvenus ! S
 ## 📧 Contact
 
 **Aurélien Anand**
-📧 votre.email@exemple.com
-🔗 [LinkedIn](https://linkedin.com/in/votre-profil)
-🐙 [GitHub](https://github.com/votreusername)
-🌐 [Portfolio](https://votreportfolio.com)
-
----
-
-## 📄 Licence
-
-Ce projet est disponible à des **fins de démonstration portfolio**. Pour usage commercial ou demandes de licence, veuillez me contacter directement.
+📧 aurelien.anand@gmail.com
+🐙 [GitHub](https://github.com/Zhurah)
 
 ---
 
