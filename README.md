@@ -1,149 +1,149 @@
-# Coach Yoga IA : Analyse de Posture en Temps Réel avec Retour Qualitatif
+# AI Yoga Coach: Real-Time Posture Analysis with Qualitative Feedback
 
 <div align="center">
 
-**Un système intelligent de coaching yoga combinant Vision par Ordinateur, Machine Learning et Traitement Temps Réel pour fournir un retour instantané et personnalisé sur l'exécution des postures.**
+**An intelligent yoga coaching system combining Computer Vision, Machine Learning, and Real-Time Processing to provide instant and personalized feedback on pose execution.**
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![MediaPipe](https://img.shields.io/badge/MediaPipe-0.10.9-green.svg)](https://mediapipe.dev/)
 [![OpenCV](https://img.shields.io/badge/OpenCV-4.8+-red.svg)](https://opencv.org/)
 [![scikit-learn](https://img.shields.io/badge/scikit--learn-1.3+-orange.svg)](https://scikit-learn.org/)
 
-[Fonctionnalités](#-fonctionnalités-clés) • [Démonstration](#-démonstration) • [Architecture](#-architecture) • [Installation](#-installation) • [Utilisation](#-utilisation) • [Détails Techniques](#-détails-techniques)
+[Key Features](#-key-features) • [Demo](#-demo) • [Architecture](#-architecture) • [Installation](#-installation) • [Usage](#-usage) • [Technical Details](#-technical-details)
 
 </div>
 
 ---
 
-##  Vue d'Ensemble du Projet
+## 📋 Project Overview
 
-Ce projet implémente un système complet de coaching yoga qui analyse la posture corporelle en temps réel grâce à des techniques avancées de vision par ordinateur et d'apprentissage automatique. Il va au-delà de la simple classification de poses pour fournir un **feedback actionnable et contextuel** sur la qualité d'exécution.
+This project implements a complete yoga coaching system that analyzes body posture in real-time using advanced computer vision and machine learning techniques. It goes beyond simple pose classification to provide **actionable and contextual feedback** on execution quality.
 
-### Le Problème
+### The Problem
 
-L'apprentissage traditionnel du yoga nécessite :
-- Des cours en présentiel (coûteux, contraintes d'horaires)
-- Des tutoriels vidéo génériques (pas de retour personnalisé)
-- Difficulté à auto-évaluer sa forme correcte
+Traditional yoga learning requires:
+- In-person classes (expensive, time constraints)
+- Generic video tutorials (no personalized feedback)
+- Difficulty in self-assessing correct form
 
-### La Solution
+### The Solution
 
-Un système alimenté par l'IA qui :
--  Détecte et classifie 5 postures de yoga avec **haute précision**
--  Analyse la qualité des poses selon **plusieurs dimensions biomécaniques**
--  Fournit un **coaching personnalisé en temps réel**
--  Fonctionne entièrement **en local** (confidentialité garantie, pas de cloud)
+An AI-powered system that:
+- 🎯 Detects and classifies 5 yoga postures with **high accuracy**
+- 📊 Analyzes pose quality across **multiple biomechanical dimensions**
+- 💬 Provides **real-time personalized coaching**
+- 🔒 Operates entirely **locally** (guaranteed privacy, no cloud)
 
 ---
 
 ## 💻 Installation
 
-### Prérequis
+### Prerequisites
 - Python 3.8+
-- Webcam (pour les fonctionnalités temps réel)
-- 4GB+ RAM recommandé
+- Webcam (for real-time features)
+- 4GB+ RAM recommended
 
-### Configuration
+### Setup
 
 ```bash
-# Cloner le dépôt
-git clone https://github.com/votreusername/ai-yoga-coach.git
+# Clone the repository
+git clone https://github.com/yourusername/ai-yoga-coach.git
 cd ai-yoga-coach
 
-# Créer un environnement virtuel
+# Create a virtual environment
 python -m venv venv
-source venv/bin/activate  # Sur Windows : venv\Scripts\activate
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 
-# Installer les dépendances
+# Install dependencies
 cd backend
 pip install -r requirements.txt
 ```
 
-### Entraîner le Modèle (Optionnel)
+### Train the Model (Optional)
 
-Si vous souhaitez réentraîner avec vos propres données :
+If you want to retrain with your own data:
 
 ```bash
 cd backend
 jupyter notebook best_model.ipynb
-# Exécuter toutes les cellules pour entraîner et exporter les modèles
+# Run all cells to train and export models
 ```
 
-Les modèles pré-entraînés sont inclus : `best_yoga_model.pkl`, `scaler.pkl`, `label_encoder.pkl`
+Pre-trained models are included: `best_yoga_model.pkl`, `scaler.pkl`, `label_encoder.pkl`
 
 ---
 
-## 🎮 Utilisation
+## 🎮 Usage
 
-### Coaching Temps Réel (Webcam)
+### Real-Time Coaching (Webcam)
 
 ```bash
 cd backend
 python realtime_app.py
 ```
 
-**Contrôles :**
-- Appuyez sur **Q** pour quitter
-- Appuyez sur **ESPACE** pour forcer une analyse immédiate
+**Controls:**
+- Press **Q** to quit
+- Press **SPACE** to force immediate analysis
 
-### Analyser des Images Statiques
+### Analyze Static Images
 
 ```python
 from backend.yoga_quality_analyzer import analyze_pose_quality
 
 result = analyze_pose_quality(
-    image_path='chemin/vers/image.jpg',
-    pose_name='plank'  # ou détection auto avec le classifier
+    image_path='path/to/image.jpg',
+    pose_name='plank'  # or auto-detect with classifier
 )
 
-print(f"Score Global : {result['quality_analysis']['overall_score']}/100")
-print("Feedback :", result['quality_analysis']['feedback'])
+print(f"Overall Score: {result['quality_analysis']['overall_score']}/100")
+print("Feedback:", result['quality_analysis']['feedback'])
 ```
 
-### Tester sur des Échantillons du Dataset
+### Test on Dataset Samples
 
 ```bash
 cd backend
 python test_system.py
-# Génère des fichiers result_*.json avec analyse détaillée
+# Generates result_*.json files with detailed analysis
 ```
 
 ---
 
-##  Fonctionnalités Clés
+## ✨ Key Features
 
-### 1. Classification Multi-Classes
-- **5 Postures Supportées** : Chien tête en bas, Planche, Arbre, Guerrier II, Déesse
-- **Haute Précision** : Entraîné sur un dataset diversifié avec évaluation rigoureuse
-- **Score de Confiance** : Ne fournit du feedback que si confiance ≥ 70%
+### 1. Multi-Class Classification
+- **5 Supported Postures**: Downward Dog, Plank, Tree, Warrior II, Goddess
+- **High Accuracy**: Trained on a diverse dataset with rigorous evaluation
+- **Confidence Score**: Only provides feedback if confidence ≥ 70%
 
-### 2. Analyse Qualitative Intelligente
-Chaque posture est analysée selon des **métriques spécifiques** :
+### 2. Intelligent Qualitative Analysis
+Each posture is analyzed based on **specific metrics**:
 
-| Posture | Métriques Clés Analysées |
-|---------|--------------------------|
-| **Chien Tête en Bas** | Alignement hanches-épaules-chevilles, extension des bras, rectitude des jambes, symétrie |
-| **Planche** | Alignement du corps, engagement du core, positionnement des épaules, symétrie |
-| **Arbre** | Équilibre vertical, hauteur du pied, ouverture de la hanche, niveau des épaules |
-| **Guerrier II** | Alignement des bras, flexion du genou (90°), alignement genou-cheville, ouverture hanches |
-| **Déesse** | Largeur de l'écartement, profondeur du squat, alignement genoux-chevilles, posture du dos |
+| Posture | Key Metrics Analyzed |
+|---------|---------------------|
+| **Downward Dog** | Hip-shoulder-ankle alignment, arm extension, leg straightness, symmetry |
+| **Plank** | Body alignment, core engagement, shoulder positioning, symmetry |
+| **Tree** | Vertical balance, foot height, hip opening, shoulder level |
+| **Warrior II** | Arm alignment, knee flexion (90°), knee-ankle alignment, hip opening |
+| **Goddess** | Stance width, squat depth, knee-ankle alignment, back posture |
 
-### 3. Système de Feedback Contextuel
-- **Niveaux de Sévérité** : Excellent (✓✓), Bon (✓), Attention (⚠️), Conseils (💡), Encouragement (💪)
-- **Guidance Actionnable** : "Poussez les genoux vers l'extérieur, alignés avec les pieds" vs. "améliorez la forme" générique
-- **Coaching Progressif** : Reconnaît les modifications pour débutants
+### 3. Contextual Feedback System
+- **Severity Levels**: Excellent (✓✓), Good (✓), Warning (⚠️), Tips (💡), Encouragement (💪)
+- **Actionable Guidance**: "Push knees outward, aligned with feet" vs. generic "improve form"
+- **Progressive Coaching**: Recognizes beginner modifications
 
-### 4. Application Webcam Temps Réel
-- Détection et analyse de pose en direct
-- Overlay visuel avec suivi du squelette
-- Fréquence d'analyse configurable (par défaut : intervalles de 3s)
-- Latence minimale (<100ms par frame)
+### 4. Real-Time Webcam Application
+- Live pose detection and analysis
+- Visual overlay with skeleton tracking
+- Configurable analysis frequency (default: 3s intervals)
+- Minimal latency (<100ms per frame)
 
 ---
 
-## 📊 Démonstration
+## 📊 Demo
 
-### Sortie d'Analyse Temps Réel
+### Real-Time Analysis Output
 
 ```json
 {
@@ -160,121 +160,121 @@ Chaque posture est analysée selon des **métriques spécifiques** :
       "shoulder_position": 85.2
     },
     "feedback": [
-      "✓✓ Alignement parfait ! Corps bien droit.",
-      "✓✓ Planche complète ! Excellente force du core.",
-      "✓ Répartissez le poids équitablement."
+      "✓✓ Perfect alignment! Body well straight.",
+      "✓✓ Full plank! Excellent core strength.",
+      "✓ Distribute weight evenly."
     ]
   }
 }
 ```
 
-### Visualisation de l'Analyse
+### Analysis Visualization
 
-Lorsque vous lancez l'application temps réel, vous verrez :
-- **Overlay du squelette** sur votre corps (articulations vertes, connexions rouges)
-- **Pose détectée** avec pourcentage de confiance
-- **Score de qualité** sur 100
-- **Top 3 des indicateurs** avec code couleur selon la performance
-- **Feedback instantané** en bas de l'écran
+When you run the real-time application, you'll see:
+- **Skeleton overlay** on your body (green joints, red connections)
+- **Detected pose** with confidence percentage
+- **Quality score** out of 100
+- **Top 3 indicators** color-coded by performance
+- **Instant feedback** at the bottom of the screen
 
 ---
 
-## Architecture
+## 🏗️ Architecture
 
-### Conception du Système
+### System Design
 
 ```
 ┌─────────────────┐
-│  Entrée Vidéo   │ (Webcam / Image)
+│  Video Input    │ (Webcam / Image)
 └────────┬────────┘
          │
          ▼
 ┌─────────────────────────────────┐
-│  Estimation de Pose MediaPipe   │ (33 Landmarks 3D)
+│  MediaPipe Pose Estimation      │ (33 3D Landmarks)
 └────────┬────────────────────────┘
          │
          ▼
 ┌─────────────────────────────────┐
 │  Feature Engineering            │ (56 Features)
-│  • Angles articulaires (8)      │
+│  • Joint angles (8)             │
 │  • Distances (6)                │
 │  • Ratios (2)                   │
-│  • Métriques de symétrie        │
+│  • Symmetry metrics             │
 └────────┬────────────────────────┘
          │
          ├──────────────────┬──────────────────┐
          ▼                  ▼                  ▼
 ┌────────────────┐  ┌──────────────┐  ┌──────────────────┐
-│  Scaler        │  │  Classifier  │  │  Analyseur       │
-│  (Normalise)   │→ │  (Modèle ML) │→ │  de Qualité      │
+│  Scaler        │  │  Classifier  │  │  Quality         │
+│  (Normalize)   │→ │  (ML Model)  │→ │  Analyzer        │
 └────────────────┘  └──────────────┘  └──────────────────┘
                             │                  │
                             ▼                  ▼
                     ┌──────────────────────────────────┐
-                    │  Pose + Confiance + Feedback     │
+                    │  Pose + Confidence + Feedback    │
                     └──────────────────────────────────┘
 ```
 
-### Composants Principaux
+### Main Components
 
-1. **`best_model.ipynb`** : Pipeline d'entraînement avec optimisation d'hyperparamètres (Random Forest, SVM, XGBoost)
-2. **`yoga_quality_analyzer.py`** : Moteur d'analyse qualitative modulaire avec évaluateurs spécifiques par pose
-3. **`realtime_app.py`** : Application webcam temps réel avec OpenCV
-4. **`test_system.py`** : Framework de test et validation end-to-end
+1. **`best_model.ipynb`**: Training pipeline with hyperparameter optimization (Random Forest, SVM, XGBoost)
+2. **`yoga_quality_analyzer.py`**: Modular qualitative analysis engine with pose-specific evaluators
+3. **`realtime_app.py`**: Real-time webcam application with OpenCV
+4. **`test_system.py`**: End-to-end testing and validation framework
 
 ---
 
-## 🔬 Détails Techniques
+## 🔬 Technical Details
 
 ### Feature Engineering
 
-À partir des 33 landmarks 3D de MediaPipe (132 valeurs), nous extrayons **56 features engineerées** :
+From MediaPipe's 33 3D landmarks (132 values), we extract **56 engineered features**:
 
-**Features Géométriques :**
-- 13 positions de landmarks clés (nez, épaules, coudes, poignets, hanches, genoux, chevilles)
-- 8 angles articulaires (flexion coudes, extension épaules, flexion hanches, angles genoux)
-- 6 métriques de distance (largeur épaules, largeur hanches, envergures des membres)
+**Geometric Features:**
+- 13 key landmark positions (nose, shoulders, elbows, wrists, hips, knees, ankles)
+- 8 joint angles (elbow flexion, shoulder extension, hip flexion, knee angles)
+- 6 distance metrics (shoulder width, hip width, limb spans)
 
-**Features Dérivées :**
-- Proportions corporelles (ratio épaules/hanches)
-- Alignement vertical (distance nez-hanches)
-- Indicateurs de symétrie (distance chevilles gauche-droite)
-- Score de confiance (visibilité moyenne des landmarks)
+**Derived Features:**
+- Body proportions (shoulder/hip ratio)
+- Vertical alignment (nose-hip distance)
+- Symmetry indicators (left-right ankle distance)
+- Confidence score (average landmark visibility)
 
-### Pipeline Machine Learning
+### Machine Learning Pipeline
 
-1. **Augmentation de Données** : Miroirs horizontaux pour variations gauche-droite
-2. **Prétraitement** : Normalisation StandardScaler
-3. **Sélection de Modèle** : Grid search sur :
+1. **Data Augmentation**: Horizontal mirrors for left-right variations
+2. **Preprocessing**: StandardScaler normalization
+3. **Model Selection**: Grid search on:
    - Random Forest (tuning `n_estimators`, `max_depth`, `min_samples_split`)
-   - SVM avec noyau RBF (tuning `C`, `gamma`)
+   - SVM with RBF kernel (tuning `C`, `gamma`)
    - XGBoost (tuning `n_estimators`, `learning_rate`, `max_depth`)
-4. **Évaluation** : Validation croisée K-Fold stratifiée, analyse de matrice de confusion
-5. **Export** : Meilleur modèle sérialisé avec joblib
+4. **Evaluation**: Stratified K-Fold cross-validation, confusion matrix analysis
+5. **Export**: Best model serialized with joblib
 
-### Algorithme d'Analyse Qualitative
+### Qualitative Analysis Algorithm
 
-Chaque pose dispose d'un **analyseur dédié** implémentant :
+Each pose has a **dedicated analyzer** implementing:
 
-1. **Extraction de Landmarks** : Identifier les parties du corps pertinentes pour la pose
-2. **Calcul de Métriques** : Calculer les indicateurs spécifiques (ex: angle genou pour Guerrier II)
-3. **Seuillage** : Comparer aux plages idéales (ex: 85-95° pour squat parfait)
-4. **Génération de Feedback** : Mapper les scores vers du texte actionnable avec marqueurs de sévérité
-5. **Agrégation** : Calculer le score de qualité global comme moyenne pondérée
+1. **Landmark Extraction**: Identify relevant body parts for the pose
+2. **Metric Calculation**: Compute specific indicators (e.g., knee angle for Warrior II)
+3. **Thresholding**: Compare to ideal ranges (e.g., 85-95° for perfect squat)
+4. **Feedback Generation**: Map scores to actionable text with severity markers
+5. **Aggregation**: Calculate overall quality score as weighted average
 
-**Exemple : Analyse de la Planche**
+**Example: Plank Analysis**
 ```python
 def _analyze_plank(self, landmarks):
-    # 1. Calculer la déviation par rapport à la ligne droite idéale
+    # 1. Calculate deviation from ideal straight line
     alignment_score = 100 - deviation_from_straight * 300
 
-    # 2. Détecter planche modifiée (genoux) vs complète
+    # 2. Detect modified plank (knees) vs. full
     if knee_to_ankle_dist < 0.05:
-        core_strength = 40  # Planche modifiée détectée
+        core_strength = 40  # Modified plank detected
     else:
         core_strength = 100
 
-    # 3. Vérifier alignement vertical épaules-poignets
+    # 3. Check vertical shoulder-wrist alignment
     shoulder_position = calculate_vertical_alignment(shoulders, wrists)
 
     return {
@@ -283,117 +283,117 @@ def _analyze_plank(self, landmarks):
     }
 ```
 
-### Caractéristiques de Performance
+### Performance Characteristics
 
-- **Vitesse d'Inférence** : ~30 FPS sur CPU (Intel i5)
-- **Taille Modèle** : <5MB (tous modèles combinés)
-- **Latence** : <100ms par frame (estimation pose + classification + analyse qualité)
-- **Mémoire** : ~200MB empreinte runtime
+- **Inference Speed**: ~30 FPS on CPU (Intel i5)
+- **Model Size**: <5MB (all models combined)
+- **Latency**: <100ms per frame (pose estimation + classification + quality analysis)
+- **Memory**: ~200MB runtime footprint
 
 ---
 
-## 📁 Structure du Projet
+## 📁 Project Structure
 
 ```
 ai-yoga-coach/
 ├── backend/
-│   ├── best_model.ipynb           # Pipeline d'entraînement
-│   ├── yoga_quality_analyzer.py   # Moteur d'analyse qualitative
-│   ├── realtime_app.py            # Application webcam
-│   ├── test_system.py             # Framework de test
-│   ├── requirements.txt           # Dépendances
-│   ├── best_yoga_model.pkl        # Classifier entraîné
-│   ├── scaler.pkl                 # Scaler de features
-│   ├── label_encoder.pkl          # Encodeur de labels
+│   ├── best_model.ipynb           # Training pipeline
+│   ├── yoga_quality_analyzer.py   # Qualitative analysis engine
+│   ├── realtime_app.py            # Webcam application
+│   ├── test_system.py             # Testing framework
+│   ├── requirements.txt           # Dependencies
+│   ├── best_yoga_model.pkl        # Trained classifier
+│   ├── scaler.pkl                 # Feature scaler
+│   ├── label_encoder.pkl          # Label encoder
 │   └── DATASET/
-│       ├── TRAIN/                 # Images d'entraînement
+│       ├── TRAIN/                 # Training images
 │       │   ├── downdog/
 │       │   ├── plank/
 │       │   ├── tree/
 │       │   ├── warrior2/
 │       │   └── goddess/
-│       └── TEST/                  # Images de test (même structure)
+│       └── TEST/                  # Test images (same structure)
 ├── README.md
-└── CLAUDE.md                      # Documentation développeur
+└── CLAUDE.md                      # Developer documentation
 ```
 
 ---
 
-## 🎓 Compétences Démontrées
+## 🎓 Skills Demonstrated
 
-Ce projet met en avant une expertise dans :
+This project showcases expertise in:
 
-### Machine Learning & IA
-- Classification multi-classes avec méthodes d'ensemble
-- Feature engineering à partir de données capteurs brutes
-- Optimisation d'hyperparamètres et sélection de modèles
-- Validation croisée et évaluation de performance
+### Machine Learning & AI
+- Multi-class classification with ensemble methods
+- Feature engineering from raw sensor data
+- Hyperparameter optimization and model selection
+- Cross-validation and performance evaluation
 
-### Vision par Ordinateur
-- Estimation de pose avec MediaPipe
-- Traitement vidéo temps réel avec OpenCV
-- Suivi et normalisation de landmarks
-- Calculs et transformations géométriques
+### Computer Vision
+- Pose estimation with MediaPipe
+- Real-time video processing with OpenCV
+- Landmark tracking and normalization
+- Geometric calculations and transformations
 
-### Ingénierie Logicielle
-- Architecture modulaire et extensible
-- Séparation claire des responsabilités (classification vs. analyse)
-- Gestion d'erreurs complète
-- Structure de code production-ready
+### Software Engineering
+- Modular and extensible architecture
+- Clear separation of concerns (classification vs. analysis)
+- Comprehensive error handling
+- Production-ready code structure
 
-### Connaissance du Domaine
-- Principes de biomécanique et kinésiologie
-- Design d'expérience utilisateur (feedback progressif)
-- Optimisation de systèmes temps réel
+### Domain Knowledge
+- Biomechanics and kinesiology principles
+- User experience design (progressive feedback)
+- Real-time system optimization
 
 ---
 
-## 🚧 Évolutions Futures
+## 🚧 Future Enhancements
 
-- [ ] **Application Mobile** : Déploiement iOS/Android avec TensorFlow Lite
-- [ ] **Plus de Poses** : Expansion à 20+ poses incluant asanas avancées
-- [ ] **Analyse Vidéo** : Analyse de sessions complètes avec cohérence temporelle
-- [ ] **Personnalisation** : Profils utilisateurs avec suivi de progression
-- [ ] **Multi-Personnes** : Support pour cours collectifs
-- [ ] **Feedback Vocal** : Guidage audio avec synthèse vocale
-- [ ] **API REST** : API pour intégrations tierces
+- [ ] **Mobile Application**: iOS/Android deployment with TensorFlow Lite
+- [ ] **More Poses**: Expansion to 20+ poses including advanced asanas
+- [ ] **Video Analysis**: Complete session analysis with temporal coherence
+- [ ] **Personalization**: User profiles with progress tracking
+- [ ] **Multi-Person**: Support for group classes
+- [ ] **Voice Feedback**: Audio guidance with speech synthesis
+- [ ] **REST API**: API for third-party integrations
 
 ---
 
 ## 📝 Dataset
 
-Le modèle est entraîné sur un dataset curé d'images de poses de yoga :
-- **5 Classes** : downdog, plank, tree, warrior2, goddess
-- **Split Train/Test** : 80/20 stratifié
-- **Qualité Images** : Arrière-plans variés, conditions d'éclairage, morphologies diverses
-- **Annotations** : MediaPipe extrait automatiquement les landmarks de pose
+The model is trained on a curated dataset of yoga pose images:
+- **5 Classes**: downdog, plank, tree, warrior2, goddess
+- **Train/Test Split**: 80/20 stratified
+- **Image Quality**: Varied backgrounds, lighting conditions, diverse body types
+- **Annotations**: MediaPipe automatically extracts pose landmarks
 
-*Détails sur les sources du dataset et licences disponibles sur demande.*
+*Details on dataset sources and licenses available upon request.*
 
 ---
 
 ## 🤝 Contribution
 
-Ceci est un projet portfolio, mais les suggestions et retours sont bienvenus ! Si vous êtes recruteur ou client potentiel, n'hésitez pas à me contacter pour discuter de :
-- Ajouts de poses personnalisées
-- Intégration avec plateformes fitness
-- Solutions en marque blanche
-- Consulting sur projets similaires CV/ML
+This is a portfolio project, but suggestions and feedback are welcome! If you are a recruiter or potential client, feel free to contact me to discuss:
+- Custom pose additions
+- Integration with fitness platforms
+- White-label solutions
+- Consulting on similar CV/ML projects
 
 ---
 
 ## 📧 Contact
 
-**Aurélien Anand**  
-📧 aurelien.anand@gmail.com  
+**Aurélien Anand**
+📧 aurelien.anand@gmail.com
 🐙 [GitHub](https://github.com/Zhurah)
 
 ---
 
 <div align="center">
 
-**Développé avec ❤️ en utilisant Python, MediaPipe et Machine Learning**
+**Developed with ❤️ using Python, MediaPipe and Machine Learning**
 
-*Accompagner les pratiquants avec un coaching yoga intelligent et accessible*
+*Empowering practitioners with intelligent and accessible yoga coaching*
 
 </div>
