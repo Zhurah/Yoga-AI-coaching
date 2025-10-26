@@ -384,7 +384,7 @@ Ceci est un projet portfolio, mais les suggestions et retours sont bienvenus ! S
 
 ## 📧 Contact
 
-**Aurélien Anand**
+**Aurélien Anand**  
 📧 aurelien.anand@gmail.com  
 🐙 [GitHub](https://github.com/Zhurah)
 
